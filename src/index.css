@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Cream & orange brand palette — bright and warm */
+    --background: 36 50% 97%;            /* bright cream */
+    --foreground: 22 35% 15%;            /* warm deep brown ink */
+
+    --card: 0 0% 100%;
+    --card-foreground: 22 35% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 22 35% 15%;
+
+    --primary: 22 90% 52%;               /* vibrant brand orange */
+    --primary-foreground: 36 50% 98%;
+
+    --secondary: 32 60% 93%;             /* soft cream */
+    --secondary-foreground: 22 35% 15%;
+
+    --muted: 34 40% 95%;
+    --muted-foreground: 22 15% 40%;
+
+    --accent: 22 90% 52%;                /* orange accent */
+    --accent-foreground: 36 50% 98%;
+
+    --gold: 22 90% 52%;                  /* mapped to orange for compat */
+    --gold-soft: 28 95% 72%;
+    --ink: 22 35% 15%;
+    --ink-soft: 22 18% 32%;
+
+    /* Deep navy used for credibility band + footer */
+    --deep: 218 45% 16%;
+    --deep-foreground: 36 50% 97%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 36 50% 98%;
+
+    --border: 32 30% 86%;
+    --input: 32 30% 86%;
+    --ring: 22 90% 52%;
+
+    --radius: 0.25rem;
+
+    --gradient-hero: linear-gradient(180deg, hsl(36 50% 97% / 0.15) 0%, hsl(22 35% 15% / 0.55) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(28 95% 62%), hsl(22 90% 52%));
+    --shadow-elegant: 0 30px 80px -30px hsl(22 50% 25% / 0.25);
+    --shadow-card: 0 1px 2px hsl(22 30% 14% / 0.04), 0 12px 40px -20px hsl(22 30% 14% / 0.14);
+    --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { -webkit-font-smoothing: antialiased; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    letter-spacing: -0.005em;
+  }
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-xs uppercase tracking-[0.28em] text-muted-foreground;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 28px; height: 1px;
+    background: hsl(var(--gold));
+  }
+  .rule-gold {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.6), transparent);
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+  .animate-fade-up { animation: fadeUp 0.9s var(--transition-smooth) both; }
+  .animate-fade-in { animation: fadeIn 1.2s ease-out both; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
